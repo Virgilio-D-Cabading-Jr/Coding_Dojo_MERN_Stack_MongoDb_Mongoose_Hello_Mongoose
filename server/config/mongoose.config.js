@@ -1,7 +1,8 @@
 // //// Import Mongoose ////////
 const mongoose = require("mongoose");
+const DB_NAME = "unicorns_db"
 
-mongoose.connect("mongodb://localhost/name_of_your_DB", {
+mongoose.connect("mongodb://localhost/" + DB_NAME, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 })
