@@ -8,8 +8,11 @@ require("./server/config/mongoose.config");
 // //// Middle Ware ////////
 app.use(express.json(), express.urlencoded({ extended: true }));
 
+// **** Connect MongoDb by requiring the file here
+require("./config/mongoose.config");
+
 // This is where we import the users routes function from our user.routes.js file
 const AllMyUserRoutes = require("./server/routes/user.routes");
 AllMyUserRoutes(app);
 
-app.listen(8000, () => console.log(`The server is all fired up on port ${PORT}`));
+app.listen(PORT, () => console.log(`🙌 🙌 🙌 The server is all fired up on port ${PORT} 🙌 🙌 🙌`));
