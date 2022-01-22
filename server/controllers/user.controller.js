@@ -48,8 +48,8 @@ module.exports.findOneSingleUser = (req, res) => {
  * @param {*} res 
  */
 module.exports.updateExistingUser = (req, res) => {
-  // User.findByIdAndUpdate( req.params.id, req.body, { new: true})
-  User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+  // User.findByIdAndUpdate( req.params.id, req.body, { new: true, runValidators: true})
+  User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
     .then(updatedUser => res.json({ user: updatedUser }))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
