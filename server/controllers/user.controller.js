@@ -24,7 +24,7 @@ module.exports.findAllUsers = (req, res) => {
   // db.Users.find()
   User.find()
     // Important: what we return here is that we receive in React
-    .then(allDaUsers => res.json({ users: allDaUsers }))
+    .then(allDaUsers => res.json({ users: allDaUsers, message: "Success" }))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
@@ -42,7 +42,13 @@ module.exports.findOneSingleUser = (req, res) => {
 
 // //// UPDATE ////////////////////////////
 
+/**
+ * **** Update A User ********
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.updateExistingUser = (req, res) => {
+  // User.findByIdAndUpdate( req.params.id, req.body, { new: true})
   User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then(updatedUser => res.json({ user: updatedUser }))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
@@ -51,7 +57,9 @@ module.exports.updateExistingUser = (req, res) => {
 // //// DELETE ////////////////////////////
 
 module.exports.deleteAnExistingUser = (req, res) => {
-  User.deleteOne({ _id: req.params.id })
+
+  // User.deleteOne({ _id: req.params.id })
+  User.findByIdAndDelete(req.params.id)
     .then(result => res.json({ result: result }))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };

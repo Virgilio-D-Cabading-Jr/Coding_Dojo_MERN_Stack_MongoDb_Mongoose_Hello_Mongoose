@@ -1,5 +1,6 @@
 const UserController = require("../controllers/user.controller");
 
+// Note: This is exporting an anonymous function
 module.exports = app => {
   app.get("/api/users/", UserController.findAllUsers);
   app.get("/api/users/:id", UserController.findOneSingleUser);

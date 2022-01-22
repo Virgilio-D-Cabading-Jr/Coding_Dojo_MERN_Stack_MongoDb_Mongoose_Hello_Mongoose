@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
 	name: String,
 	age: Number
-});
+}, {timestamps: true});
 
 // //// MODEL ////////
 // This is what we use to make the actual queries to the db
